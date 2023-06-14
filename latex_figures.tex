@@ -1,0 +1,330 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{tikz}
+\usepackage{listings}
+%load options
+\usetikzlibrary{positioning, calc, shapes.geometric, shapes.multipart,
+        shapes, arrows.meta, arrows, decorations.markings, external, trees}
+
+%Create custom arrow style:
+\tikzstyle{Arrow} = [
+thick,
+decoration={
+markings,
+mark=at position 1 with {
+\arrow[thick]{latex}
+}
+},
+shorten >= 3pt, preaction = {decorate}
+]
+
+\title{Tikz DAGs}
+\author{tpfeeney }
+\date{June 2023}
+
+\begin{document}
+
+\section{Figure 1}
+
+\begin{figure}[h]
+\begin{tikzpicture}
+    \node (1) {};
+    \node [right =of 1] (2)  {Alcohol Abuse (Exposure)};
+    \node [right =of 2] (3) {};
+    \node [right =of 3] (4) {Death (Outcome)};
+    \node [left =of 1] (5) {SEP};
+    \node [above =of 3] (6) {Smoking};
+
+    \draw[Arrow] (2.east)--(4.west);
+    \draw[Arrow] (2) to (6);
+    \draw[Arrow] (6) to (4);
+    \draw[Arrow] (5) to [out=-25, in=-160] (4);
+    \draw[Arrow] (5) to (6);
+    \draw[Arrow] (5.east)--(2.west);
+\end{tikzpicture}
+\caption{An example of a DAG with exposure to alcohol abuse, Outcome death, confounder socioeconomic position, and mediator smoking.}
+\end{figure}
+
+Code for figure:
+\begin{lstlisting}[frame=single]
+\begin{tikzpicture}
+    \node (1) {};
+    \node [right =of 1] (2)  {Alcohol Abuse (Exposure)};
+    \node [right =of 2] (3) {};
+    \node [right =of 3] (4) {Death (Outcome)};
+    \node [left =of 1] (5) {SEP};
+    \node [above =of 3] (6) {Smoking};
+
+    \draw[Arrow] (2.east)--(4.west);
+    \draw[Arrow] (2) to (6);
+    \draw[Arrow] (6) to (4);
+    \draw[Arrow] (5) to [out=-25, in=-160] (4);
+    \draw[Arrow] (5) to (6);
+    \draw[Arrow] (5.east)--(2.west);
+\end{tikzpicture}
+\end{lstlisting}
+
+\newpage
+\section{Figure 2}
+
+\begin{figure}[h]
+\begin{tikzpicture}
+    \node (1) {Family Hx of Alcohol Abuse};
+    \node [above =of 1] (11) {};
+    \node [above =of 11] (12) {};
+    \node [above =of 12] (13) {};
+    \node [right =of 1] (2) {};
+    \node [above =of 2] (10) {Friends alcohol abuse};
+    \node [above =of 10] (8) {SEP};
+    \node [right =of 2] (3) {Alcohol Abuse (E)};
+    \node [above =of 3] (9) {};
+    \node [right =of 8] (7) {};
+    \node [right =of 3] (4) {};
+    \node [above =of 4] (6) {smoking};
+    \node [right =of 4] (5) {Death (Outcome)};
+    \draw[Arrow] (3.east)--(5.west);
+    \draw[Arrow] (3) to (6);
+        \draw[Arrow] (6) to (5);
+    \draw[Arrow] (1) to (3);
+        \draw[Arrow, thick] (1.north)--(8.west);
+        \draw[Arrow] (1) to [out=-25, in=-160] (5);
+    \draw[Arrow] (8) to (6);
+    \draw[Arrow] (8) to [out=25, in=140] (5);
+    \draw[Arrow] (10) to (6);
+    \draw[Arrow] (10) to (3);
+    \draw[Arrow] (8) to (10);
+\end{tikzpicture}
+\caption{Family history of alcohol abuse, socioeconomic position, and friends’ alcohol abuse are confounders; smoking is a mediator, alcohol abuse is the exposure of interest, and mortality is the outcome of interest.}
+\label{fig: Figure 2}
+\end{figure}
+
+Code for figure 2:
+\begin{lstlisting}[frame=single]
+\begin{tikzpicture}
+    \node (1) {Family Hx of Alcohol Abuse};
+    \node [above =of 1] (11) {};
+    \node [above =of 11] (12) {};
+    \node [above =of 12] (13) {};
+    \node [right =of 1] (2) {};
+    \node [above =of 2] (10) {Friends alcohol abuse};
+    \node [above =of 10] (8) {SEP};
+    \node [right =of 2] (3) {Alcohol Abuse (E)};
+    \node [above =of 3] (9) {};
+    \node [right =of 8] (7) {};
+    \node [right =of 3] (4) {};
+    \node [above =of 4] (6) {smoking};
+    \node [right =of 4] (5) {Death (Outcome)};
+    \draw[Arrow] (3.east)--(5.west);
+    \draw[Arrow] (3) to (6);
+        \draw[Arrow] (6) to (5);
+    \draw[Arrow] (1) to (3);
+        \draw[Arrow, thick] (1.north)--(8.west);
+        \draw[Arrow] (1) to [out=-25, in=-160] (5);
+    \draw[Arrow] (8) to (6);
+    \draw[Arrow] (8) to [out=25, in=140] (5);
+    \draw[Arrow] (10) to (6);
+    \draw[Arrow] (10) to (3);
+    \draw[Arrow] (8) to (10);
+\end{tikzpicture}
+    \end{lstlisting}
+
+\newpage
+\section{Figure 3}
+
+\begin{figure}[h]
+\begin{tikzpicture}
+    \node (1) {Family Hx of Alcohol Abuse};
+    \node [above =of 1] (11) {};
+    \node [above =of 11] (12) {};
+    \node [above =of 12] (13) {};
+    \node [right =of 1] (2) {};
+    \node [above =of 2] (10) {Friends alcohol abuse};
+    \node [above =of 10] (8) {SES};
+    \node [right =of 2] (3) {Alcohol Abuse (E)};
+    \node [above =of 3] (9) {};
+    \node [right =of 8] (7) {};
+    \node [right =of 3] (4) {};
+    \node [above =of 4] (6) {smoking};
+    \node [right =of 4] (5) {Death (Outcome)};
+    \node [above =of 1] (14) {Unmeasured (U)};
+    \draw[Arrow] (3.east)--(5.west);
+    \draw[Arrow] (3) to (6);
+        \draw[Arrow] (6) to (5);
+    \draw[Arrow] (1) to (3);
+        \draw[Arrow, thick] (1) to (8);
+        \draw[Arrow] (1) to [out=-25, in=-160] (5);
+    \draw[Arrow] (8) to (6);
+    \draw[Arrow] (8) to [out=25, in=140] (5);
+    \draw[Arrow] (10) to (6);
+    \draw[Arrow] (10) to (3);
+    \draw[Arrow] (8) to (10);
+    \draw[Arrow] (14) to (1);
+    \draw[Arrow] (14) to (8);
+\end{tikzpicture}
+\caption{The DAG from Figure 2 with an unmeasured confounder. In this case, U is either unknown or unmeasured but is a common cause of a family history of alcohol abuse and smoking.}
+\end{figure}
+
+\begin{lstlisting}[frame=single]
+    \begin{tikzpicture}
+    \node (1) {Family Hx of Alcohol Abuse};
+    \node [above =of 1] (11) {};
+    \node [above =of 11] (12) {};
+    \node [above =of 12] (13) {};
+    \node [right =of 1] (2) {};
+    \node [above =of 2] (10) {Friends alcohol abuse};
+    \node [above =of 10] (8) {SES};
+    \node [right =of 2] (3) {Alcohol Abuse (E)};
+    \node [above =of 3] (9) {};
+    \node [right =of 8] (7) {};
+    \node [right =of 3] (4) {};
+    \node [above =of 4] (6) {smoking};
+    \node [right =of 4] (5) {Death (Outcome)};
+    \node [above =of 1] (14) {Unmeasured (U)};
+    \draw[Arrow] (3.east)--(5.west);
+    \draw[Arrow] (3) to (6);
+        \draw[Arrow] (6) to (5);
+    \draw[Arrow] (1) to (3);
+        \draw[Arrow, thick] (1) to (8);
+        \draw[Arrow] (1) to [out=-25, in=-160] (5);
+    \draw[Arrow] (8) to (6);
+    \draw[Arrow] (8) to [out=25, in=140] (5);
+    \draw[Arrow] (10) to (6);
+    \draw[Arrow] (10) to (3);
+    \draw[Arrow] (8) to (10);
+    \draw[Arrow] (14) to (1);
+    \draw[Arrow] (14) to (8);
+\end{tikzpicture}
+\end{lstlisting}
+
+\newpage
+\section{Figure 4}
+\begin{figure}
+\subsection{Figure 4a}
+\begin{tikzpicture}
+    \node (1) {Broken tail light};
+    \node  [right =of 1] (2) {};
+    \node [right =of 2] (3)  {};
+    \node [above =of 2] (4) {Driving Citation};
+    \node [right =of 4] (5) {Death};
+    \node [above =of 1] (6) {};
+    \node [above =of 6] (7) {Dangerous Behavior};
+
+    \draw[Arrow] (7) to (5);
+    \draw[Arrow] (7) to (4);
+    \draw[Arrow] (1) to (4);
+\end{tikzpicture}
+
+\subsection{Figure 4b}
+\begin{tikzpicture}
+    \node (1) {Broken tail light};
+    \node  [right =of 1] (2) {};
+    \node [right =of 2] (3)  {};
+    \node [rectangle, draw, above =of 2] (4) {Driving Citation};
+    \node [right =of 4] (5) {Death};
+    \node [above =of 1] (6) {};
+    \node [above =of 6] (7) {Dangerous Behavior};
+
+    \draw[Arrow] (7) to (5);
+    \draw[Arrow] (7) to (4);
+    \draw[Arrow] (1) to (4);
+    \draw[dashed, thick] (1) to [out=0, in=-150] (5);
+\end{tikzpicture}
+\caption{A) Driving citation is a collider without adjustment, there is no relationship between  a broken tail light and death B) After adjustment for the collider, there is an induced relationship between  a broken taillight and death (dashed line), which is not truly causal.}
+\end{figure}
+
+Code for figure 4a and 4b:
+\begin{lstlisting}[frame=single]
+%Figure 4a
+    \begin{tikzpicture}
+    \node (1) {Broken tail light};
+    \node  [right =of 1] (2) {};
+    \node [right =of 2] (3)  {};
+    \node [above =of 2] (4) 
+    {Driving Citation};
+    \node [right =of 4] (5) {Death};
+    \node [above =of 1] (6) {};
+    \node [above =of 6] (7) {Dangerous Behavior};
+
+    \draw[Arrow] (7) to (5);
+    \draw[Arrow] (7) to (4);
+    \draw[Arrow] (1) to (4);
+\end{tikzpicture}
+
+%Figure 4b
+\begin{tikzpicture}
+    \node (1) {Broken tail light};
+    \node  [right =of 1] (2) {};
+    \node [right =of 2] (3)  {};
+    \node [rectangle, draw, above =of 2] (4) {Driving Citation};
+    \node [right =of 4] (5) {Death};
+    \node [above =of 1] (6) {};
+    \node [above =of 6] (7) {Dangerous Behavior};
+
+    \draw[Arrow] (7) to (5);
+    \draw[Arrow] (7) to (4);
+    \draw[Arrow] (1) to (4);
+    \draw[dashed, thick] (1) to [out=0, in=-150] (5);
+\end{tikzpicture}
+\end{lstlisting}
+
+
+\section{Figure 5}
+
+\begin{figure}[h]
+\begin{tikzpicture}
+    \node [text width=1.2cm](1) {Friends alcohol abuse$_{time 0}$};
+    \node [right =of 1] (2) {Alcohol Abuse$_{time 0}$};
+    \node [right =of 2,text width=1.2cm] (3) {Friends alcohol abuse$_{time 1}$};
+    \node [right =of 3] (4) {Alcohol Abuse$_{time 1}$};
+    \node [right =of 4] (5) {};
+    \node [right =of 5] (8) {Death};
+    \node [below =of 3] (6) {Smoking$_{time 1}$};
+    \node [right =of 6] (9) {};
+    \node [right =of 9] (7) {Smoking$_{time 2}$};
+    \draw[Arrow, thick] (1.east) -- (2.west);
+    \draw[Arrow, thick] (1) to [out=25, in=160] (3);
+    \draw[Arrow, thick] (1) to [out=25, in=160] (4);
+    \draw[Arrow, thick] (1) to [out=25, in=160] (8);
+    \draw[Arrow, thick] (2.east) -- (3.west);
+    \draw[Arrow, thick] (2) to [out=25, in=160] (4);
+    \draw[Arrow, thick] (3.east) -- (4.west);
+    \draw[Arrow, thick] (3) to [out=25, in=160] (8);
+    \draw[Arrow, thick] (2) to (6);
+    \draw[Arrow, thick] (6.east) -- (4.south);
+    \draw[Arrow, thick] (6.east) -- (7);
+    \draw[Arrow, thick] (4) to (7);
+    \draw[Arrow, thick] (7) to (8);
+\end{tikzpicture}
+\caption{Time Variant DAG with the exposure to alcohol abuse was measured at baseline, and a later follow-up (Alcohol abuse$_{time 1}$, and smoking and friends who abuse alcohol were also measured at baseline and follow-up. The outcome is unchanged and is 5-year mortality (Death).}
+\end{figure}
+
+Code for figure 5:
+\begin{lstlisting}[frame=single]
+    \begin{tikzpicture}
+    \node (1) {Friends EtOH Abuse$Z_0$};
+    \node [right =of 1] (2) {Alchol Abuse$E_0$};
+    \node [right =of 2] (3) {Friends EtOH Abuse$Z_1$};
+    \node [right =of 3] (4) {Alchol Abuse$_1$};
+    \node [right =of 4] (5) {};
+    \node [right =of 5] (8) {D};
+    \node [below =of 3] (6) {Smoking$_0$};
+    \node [right =of 6] (9) {};
+    \node [right =of 9] (7) {$Smoking_1$};
+    \draw[Arrow, thick] (1.east) -- (2.west);
+    \draw[Arrow, thick] (1) to [out=25, in=160] (3);
+    \draw[Arrow, thick] (1) to [out=25, in=160] (4);
+    \draw[Arrow, thick] (1) to [out=25, in=160] (8);
+    \draw[Arrow, thick] (2.east) -- (3.west);
+    \draw[Arrow, thick] (2) to [out=25, in=160] (4);
+    \draw[Arrow, thick] (3.east) -- (4.west);
+    \draw[Arrow, thick] (3) to [out=25, in=160] (8);
+    \draw[Arrow, thick] (2) to (6);
+    \draw[Arrow, thick] (6.east) -- (4.south);
+    \draw[Arrow, thick] (6.east) -- (7);
+    \draw[Arrow, thick] (4) to (7);
+    \draw[Arrow, thick] (7) to (8);
+\end{tikzpicture}
+
+\end{lstlisting}
+
+\end{document}
