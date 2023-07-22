@@ -25,11 +25,8 @@ thick,
 decoration={
 markings,
 mark=at position 0.9999 with {
-\arrow[thick]{latex}
-}
-},
-shorten >= 3pt, preaction = {decorate}
-]
+\arrow[thick]{latex}}},
+shorten >= 3pt, preaction = {decorate}]
 
 
 
@@ -38,6 +35,7 @@ shorten >= 3pt, preaction = {decorate}
 \date{June 2023}
 
 \begin{document}
+
 
 \section{Figure 1}
 
@@ -341,7 +339,7 @@ Code for figure 5:
 \begin{tikzpicture}
     \node (1) {};
     \node [right =of 1] (2) {};
-    \node [right =of 2] (3) {Alcohol Use Disorde (Exp)};
+    \node [right =of 2] (3) {Alcohol Use Disorder (Exp)};
     \node [right =of 3] (4) {};
     \node [right =of 4] (5) {5-Year Mortality (Outcome)};
     \draw[Arrow] (3.east)--(5.west);
