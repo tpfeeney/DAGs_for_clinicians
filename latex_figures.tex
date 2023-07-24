@@ -4,6 +4,8 @@
 \usepackage[landscape]{geometry}
 \usepackage{float}
 \usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
 
 %arrange page numbers
 \usepackage{fancyhdr}
@@ -335,7 +337,7 @@ Code for figure 5:
 
 \begin{figure}[H]
 
-\subsection{6a}
+\subsection*{A}
 \begin{tikzpicture}
     \node (1) {};
     \node [right =of 1] (2) {};
@@ -345,7 +347,25 @@ Code for figure 5:
     \draw[Arrow] (3.east)--(5.west);
 \end{tikzpicture}
 
-\subsection{6b}
+\subsection*{B}
+\begin{tikzpicture}
+    \node (1) [text width=2cm] {Family Hx of Alcohol Abuse};
+    \node [right =of 1] (2) {};
+    \node [right =of 2] (3) {};
+    \node [right =of 3] (4) {Alcohol Use Disorder(Exp)};
+    \node [right =of 4] (6) {5-Year Mortality (Outcome)};
+    \node [above =of 1] (13) {};
+    \node [above =of 2] (9) {Alcohol Abuse};
+    \node [above =of 13] (7) {SEP};
+    \node [right =of 7] (8) {Care Access};
+    \draw[Arrow] (4.east)--(6.west);
+\end{tikzpicture}
+\end{figure}
+%need to split these up to smaller figures
+\setcounter{figure}{5} %this resets counter so both smaller figures are Figure 6.
+
+\begin{figure}[H]
+\subsection*{C}
 \begin{tikzpicture}
     \node (1) [text width=2cm] {Family Hx of Alcohol Abuse};
     \node [right =of 1] (2) {};
@@ -366,9 +386,10 @@ Code for figure 5:
     \draw[Arrow] (9) to  (4);
     \draw[Arrow] (9) to [out=0, in=160]  (6);
     \draw[Arrow] (1) to (9);
+    
 \end{tikzpicture}
 
-\subsection{6c}
+\subsection*{D}
 \begin{tikzpicture}
     \node (1) [text width=2.5cm] {Friends Alcohol Use};
     \node [right =of 1] (2) {};
@@ -405,8 +426,9 @@ Code for figure 5:
 \end{tikzpicture}
 
 
-\caption{Process of constructing a DAG. A) The process starts with defining the exposure and outcome of interest. B) Initial DAGs can be constructed using expert knowledge and previous studies to inform variables that are related to both the exposure and outcome, but also other variables. C) Refinement and consensus help complete the DAG including all relationships between variables and the exposure and outcome. Exp=exposure, SEP=Socioeconomic Position, Hx=history, U=unmeasured and possibly unknown. }
+\caption{Process of constructing a DAG. A) The process starts with defining the exposure and outcome of interest. B) Initial DAGs can be constructed using expert knowledge and previous studies to inform variables that are related to both the exposure and outcome, but also other variables. C) Refinement and consensus help complete the DAG including all relationships between variables and the exposure and outcome. Exp=exposure, SEP=Socioeconomic Position, Hx=history, U=unmeasured and possibly unknown.}
 \end{figure}
+
 
 Code for figure 6a:
 \begin{lstlisting}[frame=single, basicstyle=\ttfamily]
@@ -447,6 +469,7 @@ Code for figure 6b:
 
 \end{lstlisting}
 
+\newpage
 Code for figure 6c:
 \begin{lstlisting}[frame=single, basicstyle=\ttfamily]
     \begin{tikzpicture}
