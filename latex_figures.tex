@@ -44,11 +44,11 @@ shorten >= 3pt, preaction = {decorate}]
 \begin{figure}[H]
 \begin{tikzpicture}
     \node (1) {};
-    \node [right =of 1] (2)  {Alcohol Abuse (Exposure)};
+    \node [right =of 1] (2)  {\textbf{Alcohol Abuse (Exposure)}};
     \node [right =of 2] (3) {};
-    \node [right =of 3] (4) {Death (Outcome)};
-    \node [left =of 1] (5) {SEP};
-    \node [above =of 3] (6) {Smoking};
+    \node [right =of 3] (4) {\textbf{Death (Outcome)}};
+    \node [left =of 1] (5) {\textbf{SEP}};
+    \node [above =of 3] (6) {\textbf{Smoking}};
 
     \draw[Arrow] (2.east)--(4.west);
     \draw[Arrow] (2) to (6);
@@ -60,43 +60,23 @@ shorten >= 3pt, preaction = {decorate}]
 \caption{An example of a DAG with exposure to alcohol abuse, Outcome death, confounder socioeconomic position, and mediator smoking.}
 \end{figure}
 
-Code for figure:
-\begin{lstlisting}[frame=single, basicstyle=\ttfamily]
-\begin{tikzpicture}
-    \node (1) {};
-    \node [right =of 1] (2)  {Alcohol Abuse (Exposure)};
-    \node [right =of 2] (3) {};
-    \node [right =of 3] (4) {Death (Outcome)};
-    \node [left =of 1] (5) {SEP};
-    \node [above =of 3] (6) {Smoking};
-
-    \draw[Arrow] (2.east)--(4.west);
-    \draw[Arrow] (2) to (6);
-    \draw[Arrow] (6) to (4);
-    \draw[Arrow] (5) to [out=-25, in=-160] (4);
-    \draw[Arrow] (5) to (6);
-    \draw[Arrow] (5.east)--(2.west);
-\end{tikzpicture}
-\end{lstlisting}
-
-\newpage
 \section{Figure 2}
 
 \begin{figure}[H]
 \begin{tikzpicture}
-    \node (1) {Family Hx of Alcohol Abuse};
+    \node (1) {\textbf{Family Hx of Alcohol Abuse}};
     \node [above =of 1] (11) {};
     \node [above =of 11] (12) {};
     \node [above =of 12] (13) {};
     \node [right =of 1] (2) {};
-    \node [above =of 2] (10) {Friends alcohol abuse};
-    \node [above =of 10] (8) {SEP};
-    \node [right =of 2] (3) {Alcohol Abuse (E)};
+    \node [above =of 2] (10) {\textbf{Friends alcohol abuse}};
+    \node [above =of 10] (8) {\textbf{SEP}};
+    \node [right =of 2] (3) {\textbf{Alcohol Abuse (Exposure)}};
     \node [above =of 3] (9) {};
     \node [right =of 8] (7) {};
     \node [right =of 3] (4) {};
-    \node [above =of 4] (6) {smoking};
-    \node [right =of 4] (5) {Death (Outcome)};
+    \node [above =of 4] (6) {\textbf{Smoking}};
+    \node [right =of 4] (5) {\textbf{Death (Outcome)}};
     \draw[Arrow] (3.east)--(5.west);
     \draw[Arrow] (3) to (6);
         \draw[Arrow] (6) to (5);
@@ -113,60 +93,29 @@ Code for figure:
 \label{fig: Figure 2}
 \end{figure}
 
-Code for figure 2:
-\begin{lstlisting}[frame=single, basicstyle=\ttfamily]
-\begin{tikzpicture}
-    \node (1) {Family Hx of Alcohol Abuse};
-    \node [above =of 1] (11) {};
-    \node [above =of 11] (12) {};
-    \node [above =of 12] (13) {};
-    \node [right =of 1] (2) {};
-    \node [above =of 2] (10) {Friends alcohol abuse};
-    \node [above =of 10] (8) {SEP};
-    \node [right =of 2] (3) {Alcohol Abuse (E)};
-    \node [above =of 3] (9) {};
-    \node [right =of 8] (7) {};
-    \node [right =of 3] (4) {};
-    \node [above =of 4] (6) {smoking};
-    \node [right =of 4] (5) {Death (Outcome)};
-    \draw[Arrow] (3.east)--(5.west);
-    \draw[Arrow] (3) to (6);
-        \draw[Arrow] (6) to (5);
-    \draw[Arrow] (1) to (3);
-        \draw[Arrow, thick] (1.north)--(8.west);
-        \draw[Arrow] (1) to [out=-25, in=-160] (5);
-    \draw[Arrow] (8) to (6);
-    \draw[Arrow] (8) to [out=25, in=140] (5);
-    \draw[Arrow] (10) to (6);
-    \draw[Arrow] (10) to (3);
-    \draw[Arrow] (8) to (10);
-\end{tikzpicture}
-    \end{lstlisting}
-
-\newpage
 \section{Figure 3}
 
 \begin{figure}[H]
 \begin{tikzpicture}
-    \node (1) {Family Hx of Alcohol Abuse};
+    \node (1) {\textbf{Family Hx of Alcohol Abuse}};
     \node [above =of 1] (11) {};
     \node [above =of 11] (12) {};
     \node [above =of 12] (13) {};
     \node [right =of 1] (2) {};
-    \node [above =of 2] (10) {Friends alcohol abuse};
-    \node [above =of 10] (8) {SES};
-    \node [right =of 2] (3) {Alcohol Abuse (E)};
+    \node [above =of 2] (10) {\textbf{Friends alcohol abuse}};
+    \node [above =of 10] (8) {\textbf{SES}};
+    \node [right =of 2] (3) {\textbf{Alcohol Abuse (Exposure)}};
     \node [above =of 3] (9) {};
     \node [right =of 8] (7) {};
     \node [right =of 3] (4) {};
-    \node [above =of 4] (6) {smoking};
-    \node [right =of 4] (5) {Death (Outcome)};
-    \node [above =of 1] (14) {Unmeasured (U)};
+    \node [above =of 4] (6) {\textbf{Smoking}};
+    \node [right =of 4] (5) {\textbf{Death (Outcome)}};
+    \node [above =of 1] (14) {\textbf{Unmeasured (U)}};
     \draw[Arrow] (3.east)--(5.west);
     \draw[Arrow] (3) to (6);
         \draw[Arrow] (6) to (5);
     \draw[Arrow] (1) to (3);
-        \draw[Arrow, thick] (1) to (8);
+        \draw[Arrow, thick] (1) to [out=35, in=-160] (8);
         \draw[Arrow] (1) to [out=-25, in=-160] (5);
     \draw[Arrow] (8) to (6);
     \draw[Arrow] (8) to [out=25, in=140] (5);
@@ -179,39 +128,8 @@ Code for figure 2:
 \caption{The DAG from Figure 2 with an unmeasured confounder. In this case, U is either unknown or unmeasured but is a common cause of a family history of alcohol abuse and smoking.}
 \end{figure}
 
-\begin{lstlisting}[frame=single, basicstyle=\ttfamily]
-    \begin{tikzpicture}
-    \node (1) {Family Hx of Alcohol Abuse};
-    \node [above =of 1] (11) {};
-    \node [above =of 11] (12) {};
-    \node [above =of 12] (13) {};
-    \node [right =of 1] (2) {};
-    \node [above =of 2] (10) {Friends alcohol abuse};
-    \node [above =of 10] (8) {SES};
-    \node [right =of 2] (3) {Alcohol Abuse (E)};
-    \node [above =of 3] (9) {};
-    \node [right =of 8] (7) {};
-    \node [right =of 3] (4) {};
-    \node [above =of 4] (6) {smoking};
-    \node [right =of 4] (5) {Death (Outcome)};
-    \node [above =of 1] (14) {Unmeasured (U)};
-    \draw[Arrow] (3.east)--(5.west);
-    \draw[Arrow] (3) to (6);
-        \draw[Arrow] (6) to (5);
-    \draw[Arrow] (1) to (3);
-        \draw[Arrow, thick] (1) to (8);
-        \draw[Arrow] (1) to [out=-25, in=-160] (5);
-    \draw[Arrow] (8) to (6);
-    \draw[Arrow] (8) to [out=25, in=140] (5);
-    \draw[Arrow] (10) to (6);
-    \draw[Arrow] (10) to (3);
-    \draw[Arrow] (8) to (10);
-    \draw[Arrow] (14) to (1);
-    \draw[Arrow] (14) to (8);
-\end{tikzpicture}
-\end{lstlisting}
 
-\newpage
+
 \section{Figure 4}
 \begin{figure}[H]
 \subsection{Figure 4a}
@@ -235,58 +153,26 @@ Code for figure 2:
     \node [rectangle, draw, above =of 2] (4) {Movie Stardom};
     \node [above =of 1] (6) {};
     \node [above =of 6] (7) {Talent};
-
     \draw[Arrow] (7) to (4);
     \draw[Arrow] (1) to (4);
-    \draw[dashed, thick] (1) to [out=90, in=-90] (7);
+    \draw [smooth, ultra thick, dashed, red] plot coordinates{(0,2.5)(0.6,1.9)(0.95,1.40)(0.6,0.9)(0,0.2)};
 \end{tikzpicture}
-\caption{A) Movie stardom is a collider without adjustment, there is no relationship between  a attractiveness and talent B) After adjustment for the collider, there is an induced relationship between talent and attractiveness (dashed line), which is not truly causal.}
+\caption{A) Movie stardom is a collider without adjustment, there is no relationship between  a attractiveness and talent B) After adjustment for the collider, there is an induced relationship between talent and attractiveness (red dashed line) through movie stardom, which is not truly causal.}
 \end{figure}
-
-Code for figure 4a and 4b:
-\begin{lstlisting}[frame=single, basicstyle=\ttfamily]
-%Figure 4a
-\begin{tikzpicture}
-    \node (1) {Attractiveness};
-    \node  [right =of 1] (2) {};
-    \node [right =of 2] (3)  {};
-    \node [above =of 2] (4) {Movie Stardom};
-    \node [above =of 1] (6) {};
-    \node [above =of 6] (7) {Talent};
-
-    \draw[Arrow] (7) to (4);
-    \draw[Arrow] (1) to (4);
-\end{tikzpicture}
-
-%Figure 4b
-\begin{tikzpicture}
-    \node (1) {Attractiveness};
-    \node  [right =of 1] (2) {};
-    \node [right =of 2] (3)  {};
-    \node [rectangle, draw, above =of 2] (4) {Movie Stardom};
-    \node [above =of 1] (6) {};
-    \node [above =of 6] (7) {Talent};
-
-    \draw[Arrow] (7) to (4);
-    \draw[Arrow] (1) to (4);
-    \draw[dashed, thick] (1) to [out=90, in=-90] (7);
-\end{tikzpicture}
-\end{lstlisting}
-
 
 \section{Figure 5}
 
 \begin{figure}[H]
 \begin{tikzpicture}
-    \node [text width=1.2cm](1) {Friends alcohol abuse$_{time 0}$};
-    \node [right =of 1] (2) {Alcohol Abuse$_{time 0}$};
-    \node [right =of 2,text width=1.2cm] (3) {Friends alcohol abuse$_{time 1}$};
-    \node [right =of 3] (4) {Alcohol Abuse$_{time 1}$};
+    \node [text width=1.5cm](1) {\textbf{Friends alcohol abuse$_{time 0}$}};
+    \node [right =of 1] (2) {\textbf{Alcohol Abuse$_{time 0}$}};
+    \node [right =of 2,text width=1.5cm] (3) {\textbf{Friends alcohol abuse$_{time 1}$}};
+    \node [right =of 3] (4) {\textbf{Alcohol Abuse$_{time 1}$}};
     \node [right =of 4] (5) {};
-    \node [right =of 5] (8) {Death};
-    \node [below =of 3] (6) {Smoking$_{time 1}$};
+    \node [right =of 5] (8) {\textbf{Death}};
+    \node [below =of 3] (6) {\textbf{Smoking$_{time 1}$}};
     \node [right =of 6] (9) {};
-    \node [right =of 9] (7) {Smoking$_{time 2}$};
+    \node [right =of 9] (7) {\textbf{Smoking$_{time 2}$}};
     \draw[Arrow, thick] (1.east) -- (2.west);
     \draw[Arrow, thick] (1) to [out=25, in=160] (3);
     \draw[Arrow, thick] (1) to [out=25, in=160] (4);
@@ -304,34 +190,6 @@ Code for figure 4a and 4b:
 \caption{Time Variant DAG with the exposure to alcohol abuse was measured at baseline, and a later follow-up (Alcohol abuse$_{time 1}$, and smoking and friends who abuse alcohol were also measured at baseline and follow-up. The outcome is unchanged and is 5-year mortality (Death).}
 \end{figure}
 
-Code for figure 5:
-\begin{lstlisting}[frame=single, basicstyle=\ttfamily]
-    \begin{tikzpicture}
-    \node (1) {Friends EtOH Abuse$Z_0$};
-    \node [right =of 1] (2) {Alchol Abuse$E_0$};
-    \node [right =of 2] (3) {Friends EtOH Abuse$Z_1$};
-    \node [right =of 3] (4) {Alchol Abuse$_1$};
-    \node [right =of 4] (5) {};
-    \node [right =of 5] (8) {D};
-    \node [below =of 3] (6) {Smoking$_0$};
-    \node [right =of 6] (9) {};
-    \node [right =of 9] (7) {$Smoking_1$};
-    \draw[Arrow, thick] (1.east) -- (2.west);
-    \draw[Arrow, thick] (1) to [out=25, in=160] (3);
-    \draw[Arrow, thick] (1) to [out=25, in=160] (4);
-    \draw[Arrow, thick] (1) to [out=25, in=160] (8);
-    \draw[Arrow, thick] (2.east) -- (3.west);
-    \draw[Arrow, thick] (2) to [out=25, in=160] (4);
-    \draw[Arrow, thick] (3.east) -- (4.west);
-    \draw[Arrow, thick] (3) to [out=25, in=160] (8);
-    \draw[Arrow, thick] (2) to (6);
-    \draw[Arrow, thick] (6.east) -- (4.south);
-    \draw[Arrow, thick] (6.east) -- (7);
-    \draw[Arrow, thick] (4) to (7);
-    \draw[Arrow, thick] (7) to (8);
-\end{tikzpicture}
-
-\end{lstlisting}
 
 \section{Figure 6}
 
@@ -341,23 +199,23 @@ Code for figure 5:
 \begin{tikzpicture}
     \node (1) {};
     \node [right =of 1] (2) {};
-    \node [right =of 2] (3) {Alcohol Use Disorder (Exp)};
+    \node [right =of 2] (3) {\textbf{Alcohol Use Disorder(Exposure)}};
     \node [right =of 3] (4) {};
-    \node [right =of 4] (5) {5-Year Mortality (Outcome)};
+    \node [right =of 4] (5) {\textbf{5-Year Mortality(Outcome)}};
     \draw[Arrow] (3.east)--(5.west);
 \end{tikzpicture}
 
 \subsection*{B}
 \begin{tikzpicture}
-    \node (1) [text width=2cm] {Family Hx of Alcohol Abuse};
+    \node (1) [text width=2cm] {\textbf{Family Hx of Alcohol Abuse}};
     \node [right =of 1] (2) {};
     \node [right =of 2] (3) {};
-    \node [right =of 3] (4) {Alcohol Use Disorder(Exp)};
-    \node [right =of 4] (6) {5-Year Mortality (Outcome)};
+    \node [right =of 3] (4) {\textbf{Alcohol Use Disorder(Exposure)}};
+    \node [right =of 4] (6) {\textbf{5-Year Mortality (Outcome)}};
     \node [above =of 1] (13) {};
-    \node [above =of 2] (9) {Alcohol Abuse};
-    \node [above =of 13] (7) {SEP};
-    \node [right =of 7] (8) {Care Access};
+    \node [above =of 2] (9) {\textbf{Alcohol Abuse}};
+    \node [above =of 13] (7) {\textbf{SEP}};
+    \node [right =of 7] (8) {\textbf{Care Access}};
     \draw[Arrow] (4.east)--(6.west);
 \end{tikzpicture}
 \end{figure}
@@ -367,15 +225,15 @@ Code for figure 5:
 \begin{figure}[H]
 \subsection*{C}
 \begin{tikzpicture}
-    \node (1) [text width=2cm] {Family Hx of Alcohol Abuse};
+    \node (1) [text width=2cm] {\textbf{Family Hx of Alcohol Abuse}};
     \node [right =of 1] (2) {};
     \node [right =of 2] (3) {};
-    \node [right =of 3] (4) {Alcohol Use Disorder(Exp)};
-    \node [right =of 4] (6) {5-Year Mortality (Outcome)};
+    \node [right =of 3] (4) {\textbf{Alcohol Use Disorder(Exposure)}};
+    \node [right =of 4] (6) {\textbf{5-Year Mortality (Outcome)}};
     \node [above =of 1] (13) {};
-    \node [above =of 2] (9) {Alcohol Abuse};
-    \node [above =of 13] (7) {SEP};
-    \node [right =of 7] (8) {Care Access};
+    \node [above =of 2] (9) {\textbf{Alcohol Abuse}};
+    \node [above =of 13] (7) {\textbf{SEP}};
+    \node [right =of 7] (8) {\textbf{Care Access}};
     \draw[Arrow] (4.east)--(6.west);
     \draw[Arrow] (1.north) to (7.south);
     \draw[Arrow] (7.east) to (8.west);
@@ -391,19 +249,19 @@ Code for figure 5:
 
 \subsection*{D}
 \begin{tikzpicture}
-    \node (1) [text width=2.5cm] {Friends Alcohol Use};
+    \node (1) [text width=3cm] {\textbf{Friends Alcohol Use}};
     \node [right =of 1] (2) {};
     \node [right =of 2] (3) {};
-    \node [right =of 3] (4) {Alcohol Use Disorder(Exp)};
-    \node [right =of 4] (6) {5-Year Mortality (Outcome)};
+    \node [right =of 3] (4) {\textbf{Alcohol Use Disorder(Exposure)}};
+    \node [right =of 4] (6) {\textbf{5-Year Mortality(Outcome)}};
     \node [above =of 1] (13) {};
-    \node [above =of 2] (9) {Alcohol Abuse};
-    \node [above =of 13] (7) {SEP};
-    \node [right =of 7] (8) {Care Access};
+    \node [above =of 2] (9) {\textbf{Alcohol Abuse}};
+    \node [above =of 13] (7) {\textbf{SEP}};
+    \node [right =of 7] (8) {\textbf{Care Access}};
     \node [above =of 6] (15) {};
-    \node [above =of 15] (16) {smoking};
-    \node [below =of 2] (17) {U};
-    \node [left =of 1, text width=2.5cm,align=center] (18) {Family Hx of Alcohol Abuse};
+    \node [above =of 15] (16) {\textbf{Smoking}};
+    \node [below =of 2] (17) {\textbf{U}};
+    \node [left =of 1, text width=2.5cm,align=center] (18) {\textbf{Family Hx of Alcohol Abuse}};
     \draw[Arrow] (4.east)--(6.west);
     \draw[Arrow] (18.east) to (1.west);
     \draw[Arrow] (7.east) to (8.west);
@@ -422,160 +280,11 @@ Code for figure 5:
     \draw [Arrow] (7) to [out=-20, in=140] (6);
     \draw [Arrow] (18) to (7);
     \draw [Arrow] (18) to [out=30, in=180] (9);
-    \draw [Arrow] (18) to [out=-30, in=-170] (4);
+    \draw [Arrow] (18) to [out=-30, in=-180] (4);
 \end{tikzpicture}
 
 
 \caption{Process of constructing a DAG. A) The process starts with defining the exposure and outcome of interest. B) Initial DAGs can be constructed using expert knowledge and previous studies to inform variables that are related to both the exposure and outcome, but also other variables. C) Refinement and consensus help complete the DAG including all relationships between variables and the exposure and outcome. Exp=exposure, SEP=Socioeconomic Position, Hx=history, U=unmeasured and possibly unknown.}
 \end{figure}
-
-
-Code for figure 6a:
-\begin{lstlisting}[frame=single, basicstyle=\ttfamily]
-    \begin{tikzpicture}
-        \node (1) {};
-        \node [right =of 1] (2) {};
-        \node [right =of 2] (3) {Alcohol Use Disorder(Exp)};
-        \node [right =of 3] (4) {};
-        \node [right =of 4] (5) {5-Year Mortality (Outcome)};
-        \draw[Arrow] (3.east)--(5.west);
-    \end{tikzpicture}
-\end{lstlisting}
-
-Code for figure 6b:
-\begin{lstlisting}[frame=single, basicstyle=\ttfamily]
-    \begin{tikzpicture}
-        \node (1) [text width=2cm] {Family Hx of Alcohol Abuse};
-        \node [right =of 1] (2) {};
-        \node [right =of 2] (3) {};
-        \node [right =of 3] (4) {Alcohol Use Disorder(Exp)};
-        \node [right =of 4] (6) {5-Year Mortality (Outcome)};
-        \node [above =of 1] (13) {};
-        \node [above =of 2] (9) {Alcohol Abuse};
-        \node [above =of 13] (7) {SEP};
-        \node [right =of 7] (8) {Care Access};
-        \draw[Arrow] (4.east)--(6.west);
-        \draw[Arrow] (1.north) to (7.south);
-        \draw[Arrow] (7.east) to (8.west);
-        \draw[Arrow] (7) to  (9);
-        \draw[Arrow] (9) to  (4);
-        \draw[Arrow] (8) to [out=0, in=140] (6);
-        \draw[Arrow] (8.south) to  (4.north);
-        \draw[Arrow] (9) to  (4);
-        \draw[Arrow] (9) to [out=0, in=160]  (6);
-        \draw[Arrow] (1) to (9);
-    \end{tikzpicture}
-    
-
-\end{lstlisting}
-
-\newpage
-Code for figure 6c:
-\begin{lstlisting}[frame=single, basicstyle=\ttfamily]
-    \begin{tikzpicture}
-        \node (1) [text width=2.5cm] {Friends Alcohol Use};
-        \node [right =of 1] (2) {};
-        \node [right =of 2] (3) {};
-        \node [right =of 3] (4) {Alcohol Use Disorder(Exp)};
-        \node [right =of 4] (6) {5-Year Mortality (Outcome)};
-        \node [above =of 1] (13) {};
-        \node [above =of 2] (9) {Alcohol Abuse};
-        \node [above =of 13] (7) {SEP};
-        \node [right =of 7] (8) {Care Access};
-        \node [above =of 6] (15) {};
-        \node [above =of 15] (16) {smoking};
-        \node [below =of 2] (17) {U};
-        \node [left =of 1, text width=2.5cm,align=center] (18) {Family Hx of Alcohol Abuse};
-        \draw[Arrow] (4.east)--(6.west);
-        \draw[Arrow] (18.east) to (1.west);
-        \draw[Arrow] (7.east) to (8.west);
-        \draw[Arrow] (7) to  (9);
-        \draw[Arrow] (9) to  (4);
-        \draw[Arrow] (8) to [out=0, in=140] (6);
-        \draw[Arrow] (8.south) to  (4.north);
-        \draw[Arrow] (9) to  (4);
-        \draw[Arrow] (9) to [out=0, in=160]  (6);
-        \draw[Arrow] (1) to (9);
-        \draw[Arrow] (7) to [out=20, in=180] (16);
-        \draw[Arrow] (9) to (16);
-        \draw[Arrow] (16) to (6);
-        \draw[Arrow] (17) to [out=20, in=-140] (4);
-        \draw[Arrow] (17) to [out=0, in=-160](6);
-        \draw [Arrow] (7) to [out=-20, in=140] (6);
-        \draw [Arrow] (18) to (7);
-        \draw [Arrow] (18) to [out=30, in=180] (9);
-        \draw [Arrow] (18) to [out=-30, in=-170] (4);
-    \end{tikzpicture}
-\end{lstlisting}
-
-%%
-%\section{Figure 4}
-%\begin{figure}
-%\subsection{Figure 4a}
-%\begin{tikzpicture}
-%    \node (1) {ACE-Inhibitors};
-%    \node  [right =of 1] (2) {};
-%    \node [right =of 2] (3)  {};
-%    \node [above =of 2] (4) {Hospitalisation};
-%    \node [right =of 4] (5) {Death};
-%    \node [above =of 1] (6) {};
-%    \node [above =of 6] (7) {Frailty};
-%
-%    \draw[Arrow] (7) to (5);
-%    \draw[Arrow] (7) to (4);
-%    \draw[Arrow] (1) to (4);
-%\end{tikzpicture}
-%
-%\subsection{Figure 4b}
-%\begin{tikzpicture}
-%    \node (1) {ACE-Inhibitors};
-%    \node  [right =of 1] (2) {};
-%    \node [right =of 2] (3)  {};
-%    \node [rectangle, draw, above =of 2] (4) {Hospitalisation};
-%    \node [right =of 4] (5) {Death};
-%    \node [above =of 1] (6) {};
-%    \node [above =of 6] (7) {Frailty};
-%
-%    \draw[Arrow] (7) to (5);
-%    \draw[Arrow] (7) to (4);
-%    \draw[Arrow] (1) to (4);
-%    \draw[dashed, thick] (1) to [out=0, in=-150] (5);
-%\end{tikzpicture}
-%\caption{Adapted from Griffith et al. 2020. A) Hospitalisation is a collider without adjustment, there is no relationship between  a frailty and ACD-Inhibitor use B) After adjustment for the collider, there is an induced relationship between ACE-inhibitors and death (dashed line), which is not truly causal.}
-%\end{figure}
-%
-%Code for figure 4a and 4b:
-%\begin{lstlisting}[frame=single]
-%%Figure 4a
-%   \begin{tikzpicture}
-%    \node (1) {ACE-Inhibitors};
-%    \node  [right =of 1] (2) {};
-%    \node [right =of 2] (3)  {};
-%    \node [above =of 2] (4) {Hospitalisation};
-%    \node [right =of 4] (5) {Death};
-%    \node [above =of 1] (6) {};
-%    \node [above =of 6] (7) {Frailty};
-%
-%    \draw[Arrow] (7) to (5);
-%    \draw[Arrow] (7) to (4);
-%    \draw[Arrow] (1) to (4);
-%\end{tikzpicture}
-%
-%%Figure 4b
-%\begin{tikzpicture}
-%    \node (1) {ACE-Inhibitors};
-%    \node  [right =of 1] (2) {};
-%    \node [right =of 2] (3)  {};
-%    \node [rectangle, draw, above =of 2] (4) {Hospitalisation};
-%    \node [right =of 4] (5) {Death};
-%    \node [above =of 1] (6) {};
-%    \node [above =of 6] (7) {Frailty};
-%
-%    \draw[Arrow] (7) to (5);
-%    \draw[Arrow] (7) to (4);
-%    \draw[Arrow] (1) to (4);
-%    \draw[dashed, thick] (1) to [out=0, in=-150] (5);
-%\end{tikzpicture}
-
 
 \end{document}

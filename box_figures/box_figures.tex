@@ -5,6 +5,8 @@
 \usepackage{float}
 \usepackage{listings}
 
+\usepackage{pstricks}
+
 \usetikzlibrary{external}%allows export of pictures
 \tikzexternalize 
 
@@ -59,15 +61,15 @@ shorten >= 3pt, preaction = {decorate}]
 
 \begin{document}
 
-\section{Box DAG}
+\section{Box 1 DAGs}
 \begin{tikzpicture}
     \node (1) {};
-    \node [right =of 1] (2)  {Exposure};
+    \node [right =of 1] (2)  {\textbf{Exposure}};
     \node [right =of 2] (3) {};
-    \node [right =of 3] (4) {Outcome};
-    \node [left =of 1] (5) {Confounder};
-    \node [above =of 3] (6) {Mediator};
-    \node [right =of 4] (7) {Collider};
+    \node [right =of 3] (4) {\textbf{Outcome}};
+    \node [left =of 1] (5) {\textbf{Confounder}};
+    \node [above =of 3] (6) {\textbf{Mediator}};
+    \node [right =of 4] (7) {\textbf{Collider}};
 
     \draw[Arrow] (2.east)--(4.west);
     \draw[Arrow] (2) to (6);
@@ -317,5 +319,131 @@ shorten >= 3pt, preaction = {decorate}]
     \draw[ArrowRed] (4.east)--(7.west);
     \draw[ArrowRed] (6) to [out=0, in=140] (7);
 \end{tikzpicture}
+
+
+%%%%%%%%%%%%%%%%%%%%
+%d-separation graph BOX 2
+%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\huge Box 2 figures
+\normalsize
+
+d-Separation and causal versus biasing path
+\subsection*{confounder, unadjusted}
+\begin{tikzpicture}
+    \node (1) {\textbf{Confounder}};
+    \node [right =of 1] (2) {\textbf{Exposure}};
+    \node [right =of 2] (3) {\textbf{Outcome}};
+    \node [right =of 2] (4){};
+    \node [below =of 4] (5) {\textbf{Mediator}};
+    \draw [Arrow] (1) to (2);
+    \draw [Arrow] (1) to [out=40, in=140] (3);
+    \draw [Arrow] (2) to (5);
+    \draw [Arrow] (5) to (3);
+\end{tikzpicture}
+
+\subsection*{confounder, unadjusted ,biasing path illustrated}
+\begin{tikzpicture}
+    %\draw[help lines, step=0.2cm] (0,0) grid (5,1);
+    \node (1) {\textbf{Confounder}};
+    \node [right =of 1] (2) {\textbf{Exposure}};
+    \node [right =of 2] (3) {\textbf{Outcome}};
+    \node [right =of 2] (4){};
+    \node [below =of 4] (5) {\textbf{Mediator}};
+    \draw [Arrow] (1) to (2);
+    \draw [Arrow] (1) to [out=40, in=140] (3);
+    \draw [ultra thick, smooth, dashed, red] plot coordinates {(5.3, 0.26) (4.8,0.55) (4.4,0.75) (4,0.88) (3.5,0.98) (2.5, 0.98) (1.5,0.75) (.7,.26)  (2.5, .26)};
+    \draw [Arrow] (2) to (5);
+    \draw [Arrow] (5) to (3);
+\end{tikzpicture}
+
+
+\subsection*{confounder, unadjusted ,biasing path illustrated, no Mediator}
+\begin{tikzpicture}
+    %\draw[help lines, step=0.2cm] (0,0) grid (5,1);
+    \node (1) {\textbf{Confounder}};
+    \node [right =of 1] (2) {\textbf{Exposure}};
+    \node [right =of 2] (3) {\textbf{Outcome}};
+    \node [right =of 2] (4){};
+    %\node [below =of 4] (5) {\textbf{Mediator}};
+    \draw [Arrow] (1) to (2);
+    \draw [Arrow] (1) to [out=40, in=140] (3);
+    \draw [ultra thick, smooth, dashed, red] plot coordinates {(5.3, 0.26) (4.8,0.55) (4.4,0.75) (4,0.88) (3.5,0.98) (2.5, 0.98) (1.5,0.75) (.7,.26)  (2.5, .26)};
+    %\draw [Arrow] (2) to (5);
+    %\draw [Arrow] (5) to (3);
+\end{tikzpicture}
+
+\subsection*{confounder, adjusted , no biasing path}
+\begin{tikzpicture}
+    \node [rectangle, draw] (1) {\textbf{Confounder}};
+    \node [right =of 1] (2) {\textbf{Exposure}};
+    \node [right =of 2] (3) {\textbf{Outcome}};
+    \draw [Arrow] (1) to (2);
+    \draw [Arrow] (1) to [out=40, in=140] (3);
+\end{tikzpicture}
+
+\subsection*{mediator, adjusted , no causal path}
+\begin{tikzpicture}
+    \node (1) {\textbf{Exposure}};
+    \node [rectangle, draw,right =of 1] (2) {\textbf{Mediator}};
+    \node [right =of 2] (3) {\textbf{Outcome}};
+    \draw [Arrow] (1) to (2);
+    \draw [Arrow] (2) to (3);
+\end{tikzpicture}
+
+
+\subsection*{m-bias, adjusted , no causal path}
+\begin{tikzpicture}
+    %\draw[help lines, step=0.2cm] (0,0) grid (5,2);
+    \node (1) {};
+    \node [above =of 1] (2) {};
+    \node [above =2] (3) {\textbf{Sex at Birth}};
+   
+    \node [right =of 3] (5) {};
+    \node [below =of 5] (4) {\textbf{Height}};
+    \node [right =of 5] (6) {\textbf{Nutrition}};
+    \node [right =of 1] (7) {};
+    \node [below =of 4] (8) {\textbf{Plays basketball}};
+   
+    \draw[Arrow] (3) to (4);
+    \draw[Arrow] (6) to (4);
+    \draw[Arrow] (4) to (8);
+\end{tikzpicture}
+
+
+\subsection*{m-bias, adjusted , no causal path}
+\begin{tikzpicture}
+    \node (1) {};
+    \node [above =of 1] (2) {};
+    \node [above =2] (3) {\textbf{Sex at Birth}};
+    \node [right =of 3] (5) {};
+    \node [rectangle, draw, below =of 5] (4) {\textbf{Height}};
+    \node [right =of 5] (6) {\textbf{Nutrition}};
+    \node [right =of 1] (7) {};
+    \node [below =of 4] (8) {\textbf{Plays basketball}};
+    \draw [ultra thick, smooth, dashed, red] plot coordinates {(0.65, 2) (2.35,1.2) (3.75, 2)};
+    \draw[Arrow] (3) to (4);
+    \draw[Arrow] (6) to (4);
+    \draw[Arrow] (4) to (8);
+\end{tikzpicture}
+
+\subsection*{m-bias, adjusted , no causal path}
+\begin{tikzpicture}
+    \node (1) {};
+    \node [above =of 1] (2) {};
+    \node [above =2] (3) {\textbf{Sex at Birth}};
+   
+    \node [right =of 3] (5) {};
+    \node [below =of 5] (4) {\textbf{Height}};
+    \node [right =of 5] (6) {\textbf{Nutrition}};
+    \node [right =of 1] (7) {};
+    \node [rectangle, draw, below =of 4] (8) {\textbf{Plays basketball}};
+    \draw [ultra thick, smooth, dashed, red] plot coordinates {(0.65, 2) (2.35,1.2) (3.75, 2)};
+    \draw[Arrow] (3) to (4);
+    \draw[Arrow] (6) to (4);
+    \draw[Arrow] (4) to (8);
+\end{tikzpicture}
+
+
 
 \end{document}
