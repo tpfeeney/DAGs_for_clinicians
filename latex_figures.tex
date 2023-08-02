@@ -32,6 +32,7 @@ shorten >= 3pt, preaction = {decorate}]
 
 
 
+
 \title{Tikz DAGs}
 \author{tpfeeney }
 \date{June 2023}
@@ -285,6 +286,44 @@ shorten >= 3pt, preaction = {decorate}]
 
 
 \caption{Process of constructing a DAG. A) The process starts with defining the exposure and outcome of interest. B) Initial DAGs can be constructed using expert knowledge and previous studies to inform variables that are related to both the exposure and outcome, but also other variables. C) Refinement and consensus help complete the DAG including all relationships between variables and the exposure and outcome. Exp=exposure, SEP=Socioeconomic Position, Hx=history, U=unmeasured and possibly unknown.}
+\end{figure}
+
+%%%Figure 7
+\section*{Figure 7}
+\subsection*{A}
+\begin{figure}[H]
+\begin{tikzpicture}
+    \node [rectangle, draw](1) {\textbf{Alcohol Use Disorder (Exposure)}};
+    \node [right =of 1] (2) {};
+    \node [right =of 2] (3) {};
+    \node [right =of 3] (4) {};
+    \node [right =of 4, rectangle, draw] (5) {\textbf{5-Year Mortality (Outcome)}};
+    \node [above =of 1, rectangle, draw] (6) {\textbf{SEP}};
+    \node [right =of 6, rectangle, draw] (7) {\textbf{Care Access}};
+    \node [right =of 7, rectangle, draw] (8) {\textbf{Alcohol Abuse}};
+    \node [right =of 8, rectangle, draw] (9) {\textbf{Smoking}};
+    \draw [Arrow] (6) to (1); \draw [Arrow] (6) to (5);
+    \draw [Arrow] (7) to (1); \draw [Arrow] (7) to (5);
+    \draw [Arrow] (8) to (1); \draw [Arrow] (8) to (5);
+    \draw [Arrow] (9) to (1); \draw [Arrow] (9) to (5);
+\end{tikzpicture}
+
+\subsection*{B}
+\begin{tikzpicture}
+    \node (1) {};
+    \node [right =of 1] (2)  {\textbf{Alcohol Abuse (Exposure)}};
+    \node [right =of 2] (3) {};
+    \node [right =of 3] (4) {\textbf{Death (Outcome)}};
+    \node [left =of 1] (5) {\textbf{SEP}};
+    \node [above =of 3] (6) {\textbf{Smoking}};
+
+    \draw[Arrow] (2.east)--(4.west);
+    \draw[>=latex, thick, <->] (2)--(6);
+    \draw[Arrow] (6) to (3);
+    \draw[Arrow] (5) to [out=-25, in=-160] (4);
+    \draw[Arrow] (5) to [out=30, in=180] (6);
+    \draw[>=latex, thick, <->] (5.east)--(2.west);
+\end{tikzpicture}
 \end{figure}
 
 \end{document}
