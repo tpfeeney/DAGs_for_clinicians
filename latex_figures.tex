@@ -175,40 +175,39 @@ shorten >= 3pt, preaction = {decorate}]
 \begin{figure}[H]
     \subsection*{A}
     \begin{tikzpicture}
-        \node [text width=3cm, rectangle, draw, outer sep=0.1cm] (4) at (10,7)  {\textbf{Antihypertensive Medication Use}};
-        \node (3) at (10,5) {\textbf{Hypertension}};
-        \node (2) at (6,7) {\textbf{Obesity}};
-        \node (6) at (14,7) {\textbf{Schooling}};
-        \node (1) at (6,5) {\textbf{Physical Activity}};
-        \node (5) at (14,5) {\textbf{Diet}};
+        \node [text width=2.5cm, rectangle, draw, outer sep=0.1cm] (4) at (10,7)  {\textbf{Death before Age 4 Years}};
+        \node (2) at (6,7) {\textbf{SEP at Birth}};
+        \node [text width=3cm] (6) at (14,7) {\textbf{Infections from Birth to Age 4 Years}};
+        \node (1) at (6,5) {\textbf{Birthweight}};
+        \node [text width=3cm](5) at (14,5) {\textbf{Lung Function at Age 4 Years}};
     
+        \draw[Arrow] (1.east) to (4.south);
         \draw[Arrow] (2.south) to (1.north);
-        \draw[Arrow] (2.east) to (4.west);
-        \draw[Arrow] (1.east) to (3.west);
-        \draw[Arrow] (5.west) to (3.east);
-        \draw[Arrow] (6.south) to (5.north);
+        \draw[Arrow] (2.south) to (5.north west);
         \draw[Arrow] (6.west) to (4.east);
-        \draw[Arrow] (4.south) to (3.north);
-\end{tikzpicture}
+        \draw[Arrow] (6.south) to (5.north);
+        \draw[Arrow] (1.east) to (5.west);
+        \draw[Arrow] (2.east) to (4.west);
+        
+    \end{tikzpicture}
 
 \subsection*{B}
 \begin{tikzpicture}
-    \node [text width=2.5cm, rectangle, draw, outer sep=0.1cm] (4) at (10,7)  {\textbf{Death before Age 4 Years}};
-    \node (2) at (6,7) {\textbf{SEP at Birth}};
-    \node [text width=3cm] (6) at (14,7) {\textbf{Infections from Birth to Age 4 Years}};
-    \node (1) at (6,5) {\textbf{Birthweight}};
-    \node [text width=3cm](5) at (14,5) {\textbf{Lung Function at Age 4 Years}};
+    \node [text width=3cm, rectangle, draw, outer sep=0.1cm] (4) at (10,7)  {\textbf{Antihypertensive Medication Use}};
+    \node (3) at (10,5) {\textbf{Hypertension}};
+    \node (2) at (6,7) {\textbf{Obesity}};
+    \node (6) at (14,7) {\textbf{Schooling}};
+    \node (1) at (6,5) {\textbf{Physical Activity}};
+    \node (5) at (14,5) {\textbf{Diet}};
 
-    \draw[Arrow] (1.east) to (4.south);
     \draw[Arrow] (2.south) to (1.north);
-    \draw[Arrow] (2.south) to (5.north west);
-    \draw[Arrow] (6.west) to (4.east);
-    \draw[Arrow] (6.south) to (5.north);
-    \draw[Arrow] (1.east) to (5.west);
     \draw[Arrow] (2.east) to (4.west);
-    
+    \draw[Arrow] (1.east) to (3.west);
+    \draw[Arrow] (5.west) to (3.east);
+    \draw[Arrow] (6.south) to (5.north);
+    \draw[Arrow] (6.west) to (4.east);
+    \draw[Arrow] (4.south) to (3.north);
 \end{tikzpicture}
-
 \caption{Selection Bias}
 \end{figure}
 
