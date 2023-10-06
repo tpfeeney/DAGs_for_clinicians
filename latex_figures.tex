@@ -45,7 +45,7 @@ shorten >= 3pt, preaction = {decorate}]
 \begin{figure}[H]
 \begin{tikzpicture}
     \node (1) {};
-    \node [right =of 1] (2)  {\textbf{Alcohol Use Disorder (Exposure)}};
+    \node [right =of 1] (2)  {\textbf{Heavy Alcohol Use (Exposure)}};
     \node [right =of 2] (3) {};
     \node [right =of 3] (4) {\textbf{Death (Outcome)}};
     \node [left =of 1] (5) {\textbf{SEP}};
@@ -307,7 +307,7 @@ shorten >= 3pt, preaction = {decorate}]
     \draw[Arrow] (16) to (6);
     \draw[Arrow] (17) to [out=20, in=-140] (4);
     \draw[Arrow] (17) to [out=0, in=-160](6);
-    \draw [Arrow] (7) to [out=-10, in=150] (6);
+    \draw [Arrow] (7) to [out=10, in=120] (6);
     \draw [Arrow] (18) to (7);
     \draw [Arrow] (18) to [out=30, in=180] (9);
     \draw [Arrow] (18) to [out=-30, in=-180] (4);
@@ -361,10 +361,10 @@ shorten >= 3pt, preaction = {decorate}]
 
 \begin{figure}[H]
 \begin{tikzpicture}
-    \node [text width=1.5cm](1) {\textbf{Friends alcohol abuse$_{time 0}$}};
-    \node [right =of 1] (2) {\textbf{Alcohol Abuse$_{time 0}$}};
-    \node [right =of 2,text width=1.5cm] (3) {\textbf{Friends alcohol abuse$_{time 1}$}};
-    \node [right =of 3] (4) {\textbf{Alcohol Abuse$_{time 1}$}};
+    \node [text width=2.8cm](1) {\textbf{Friend's heavy alcohol use$_{time 0}$}};
+    \node [right =of 1] (2) {\textbf{Heavy Alcohol Use$_{time 0}$}};
+    \node [right =of 2,text width=2.8cm] (3) {\textbf{Friend's heavy alcohol use$_{time 1}$}};
+    \node [right =of 3] (4) {\textbf{Heavy Alcohol Use$_{time 1}$}};
     \node [right =of 4] (5) {};
     \node [right =of 5] (8) {\textbf{Death}};
     \node [below =of 3] (6) {\textbf{Smoking$_{time 1}$}};
