@@ -175,11 +175,12 @@ shorten >= 3pt, preaction = {decorate}]
 \begin{figure}[H]
     \subsection*{A}
     \begin{tikzpicture}
-        \node [text width=2.5cm, rectangle, draw, outer sep=0.1cm] (4) at (10,7)  {\textbf{Death before Age 4 Years}};
+        \node  [text width=2.5cm, align=center] (4) at (10,7)  {\textbf{Death before Age 4 Years}};
         \node (2) at (6,7) {\textbf{SEP at Birth}};
         \node [text width=3cm] (6) at (14,7) {\textbf{Infections from Birth to Age 4 Years}};
         \node (1) at (6,5) {\textbf{Birthweight}};
         \node [text width=3cm](5) at (14,5) {\textbf{Lung Function at Age 4 Years}};
+        \node [rectangle, draw, outer sep=0.1cm] (7) at (10,9) {\textbf{S}};
     
         \draw[Arrow] (1.east) to (4.south);
         \draw[Arrow] (2.south) to (1.north);
@@ -188,6 +189,7 @@ shorten >= 3pt, preaction = {decorate}]
         \draw[Arrow] (6.south) to (5.north);
         \draw[Arrow] (1.east) to (5.west);
         \draw[Arrow] (2.east) to (4.west);
+        \draw[Arrow] (4.north) to (7.south);
         
     \end{tikzpicture}
 
