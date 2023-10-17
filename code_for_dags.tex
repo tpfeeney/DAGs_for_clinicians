@@ -52,14 +52,14 @@ shorten >= 3pt, preaction = {decorate}]
 
 
 \section*{\LaTeX Code for Figure 1:}
-\begin{lstlisting}[frame=single, basicstyle=\ttfamily]
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily, linewidth=20.5cm]
 \begin{tikzpicture}
     \node (1) {};
-    \node [right =of 1] (2)  {Alcohol Abuse (Exposure)};
+    \node [right =of 1] (2)  {\textbf{Heavy Alcohol Use (Exposure)}};
     \node [right =of 2] (3) {};
-    \node [right =of 3] (4) {Death (Outcome)};
-    \node [left =of 1] (5) {SEP};
-    \node [above =of 3] (6) {Smoking};
+    \node [right =of 3] (4) {\textbf{Death (Outcome)}};
+    \node [left =of 1] (5) {\textbf{SEP}};
+    \node [above =of 3] (6) {\textbf{Smoking}};
 
     \draw[Arrow] (2.east)--(4.west);
     \draw[Arrow] (2) to (6);
@@ -72,26 +72,39 @@ shorten >= 3pt, preaction = {decorate}]
 
 \section*{Daggity Code for Figure 1:}
 \begin{lstlisting}[frame=single, basicstyle=\ttfamily]
+    dag {
+"Heavy Alcohol Use" [exposure,pos="-0.641,0.725"]
+Death [outcome,pos="0.403,0.714"]
+SEP [selected,pos="-1.648,0.714"]
+Smoking [pos="-0.232,-0.073"]
+"Heavy Alcohol Use" -> Death
+"Heavy Alcohol Use" -> Smoking
+SEP -> "Heavy Alcohol Use"
+SEP -> Death [pos="-0.582,1.774"]
+SEP -> Smoking
+Smoking -> Death
+}
 \end{lstlisting}
     
 
 
 \section*{\LaTeX\hspace*{1mm} Code for Figure 2:}
-\begin{lstlisting}[frame=single, basicstyle=\ttfamily]
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily, linewidth=20.5cm]
     \begin{tikzpicture}
-        \node (1) {\textbf{Family Hx of Alcohol Abuse}};
+        \node (1) {\textbf{Family Hx of heavy Alcohol Use}};
         \node [above =of 1] (11) {};
         \node [above =of 11] (12) {};
         \node [above =of 12] (13) {};
         \node [right =of 1] (2) {};
-        \node [above =of 2] (10) {\textbf{Friends alcohol abuse}};
+        \node [above =of 2] (10) {\textbf{Friends heavy alcohol use}};
         \node [above =of 10] (8) {\textbf{SEP}};
-        \node [right =of 2] (3) {\textbf{Alcohol Abuse (Exposure)}};
+        \node [right =of 2] (3) {\textbf{Heavy Alcohol Use (Exposure)}};
         \node [above =of 3] (9) {};
         \node [right =of 8] (7) {};
         \node [right =of 3] (4) {};
-        \node [above =of 4] (6) {\textbf{smoking}};
+        \node [above =of 4] (6) {\textbf{Smoking}};
         \node [right =of 4] (5) {\textbf{Death (Outcome)}};
+    
         \draw[Arrow] (3.east)--(5.west);
         \draw[Arrow] (3) to (6);
             \draw[Arrow] (6) to (5);
@@ -103,36 +116,56 @@ shorten >= 3pt, preaction = {decorate}]
         \draw[Arrow] (10) to (6);
         \draw[Arrow] (10) to (3);
         \draw[Arrow] (8) to (10);
+    
     \end{tikzpicture}
     \end{lstlisting}
 
     \section*{Daggity Code for Figure 2:}
-\begin{lstlisting}[frame=single, basicstyle=\ttfamily]
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily, linewidth=20.5cm]
+    dag {
+"Friends Heavy Alcohol Use" [pos="-1.002,0.076"]
+"Heavy Alcohol Use" [exposure,pos="-0.641,0.725"]
+"family hx of heavy alcohol use" [selected,pos="-1.648,0.714"]
+Death [outcome,pos="0.403,0.714"]
+SEP [pos="-1.071,-0.423"]
+Smoking [pos="-0.232,-0.073"]
+"Friends Heavy Alcohol Use" -> "Heavy Alcohol Use"
+"Friends Heavy Alcohol Use" -> Smoking
+"Heavy Alcohol Use" -> Death
+"Heavy Alcohol Use" -> Smoking
+"family hx of heavy alcohol use" -> "Heavy Alcohol Use"
+"family hx of heavy alcohol use" -> Death [pos="-0.582,1.774"]
+"family hx of heavy alcohol use" -> SEP
+SEP -> "Friends Heavy Alcohol Use"
+SEP -> Death [pos="0.085,-0.783"]
+SEP -> Smoking
+Smoking -> Death
+}
 \end{lstlisting}
     
 
 \section*{\LaTeX\hspace*{1mm} Code for Figure 3:}
-    \begin{lstlisting}[frame=single, basicstyle=\ttfamily]
+    \begin{lstlisting}[frame=single, basicstyle=\ttfamily, linewidth=20.5cm]
         \begin{tikzpicture}
-            \node (1) {Family Hx of Alcohol Abuse};
+            \node (1) {\textbf{Family Hx of heavy alcohol use}};
             \node [above =of 1] (11) {};
             \node [above =of 11] (12) {};
             \node [above =of 12] (13) {};
             \node [right =of 1] (2) {};
-            \node [above =of 2] (10) {Friends alcohol abuse};
-            \node [above =of 10] (8) {SES};
-            \node [right =of 2] (3) {Alcohol Abuse (E)};
+            \node [above =of 2] (10) {\textbf{Friends heavy alcohol use}};
+            \node [above =of 10] (8) {\textbf{SES}};
+            \node [right =of 2] (3) {\textbf{Heavy Alcohol Use (Exposure)}};
             \node [above =of 3] (9) {};
             \node [right =of 8] (7) {};
             \node [right =of 3] (4) {};
-            \node [above =of 4] (6) {smoking};
-            \node [right =of 4] (5) {Death (Outcome)};
-            \node [above =of 1] (14) {Unmeasured (U)};
+            \node [above =of 4] (6) {\textbf{Smoking}};
+            \node [right =of 4] (5) {\textbf{Death (Outcome)}};
+            \node [above =of 1] (14) {\textbf{Unmeasured (U)}};
             \draw[Arrow] (3.east)--(5.west);
             \draw[Arrow] (3) to (6);
                 \draw[Arrow] (6) to (5);
             \draw[Arrow] (1) to (3);
-                \draw[Arrow, thick] (1) to (8);
+                \draw[Arrow, thick] (1) to [out=40, in=-160] (8);
                 \draw[Arrow] (1) to [out=-25, in=-160] (5);
             \draw[Arrow] (8) to (6);
             \draw[Arrow] (8) to [out=25, in=140] (5);
@@ -146,86 +179,189 @@ shorten >= 3pt, preaction = {decorate}]
    
 
 \section*{Daggity Code for Figure 3:}
-\begin{lstlisting}[frame=single, basicstyle=\ttfamily]
-
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily, linewidth=20.5cm]
+    dag {
+        "Friends Heavy Alcohol Use" [pos="-1.002,0.076"]
+        "Heavy Alcohol Use" [exposure,pos="-0.641,0.725"]
+        "family hx of heavy alcohol use" [selected,pos="-1.648,0.714"]
+        Death [outcome,pos="0.403,0.714"]
+        SEP [pos="-1.071,-0.423"]
+        Smoking [pos="-0.232,-0.073"]
+        U [pos="-1.710,-0.047"]
+        "Friends Heavy Alcohol Use" -> "Heavy Alcohol Use"
+        "Friends Heavy Alcohol Use" -> Smoking
+        "Heavy Alcohol Use" -> Death
+        "Heavy Alcohol Use" -> Smoking
+        "family hx of heavy alcohol use" -> "Heavy Alcohol Use"
+        "family hx of heavy alcohol use" -> Death [pos="-0.582,1.774"]
+        "family hx of heavy alcohol use" -> SEP
+        SEP -> "Friends Heavy Alcohol Use"
+        SEP -> Death [pos="0.085,-0.783"]
+        SEP -> Smoking
+        Smoking -> Death
+        U -> "family hx of heavy alcohol use"
+        U -> SEP
+        }        
 \end{lstlisting}
 
 \section*{\LaTeX\hspace*{1mm} Code for Figure 4a and 4b:}
-\begin{lstlisting}[frame=single, basicstyle=\ttfamily]
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily, linewidth=20.5cm]
     \begin{figure}[H]
         %Figure 4a
         \subsection{Figure 4a}
         \begin{tikzpicture}
-            \node (1) {Attractiveness};
+            \node [text width =3.5cm] (1) {\textbf{Unmeasured/Unknown Risk Factors}};
             \node  [right =of 1] (2) {};
             \node [right =of 2] (3)  {};
-            \node [above =of 2] (4) {Movie Stardom};
+            \node [above =of 2] (4) {\textbf{Heart Failure}};
             \node [above =of 1] (6) {};
-            \node [above =of 6] (7) {Talent};
-        
+            \node [above =of 6] (7) {\textbf{Obesity}};
+            \node [right =of 4] (8) {\textbf{Mortality}};
+            
             \draw[Arrow] (7) to (4);
+            \draw[Arrow] (7) to (4);
+            \draw[Arrow] (4) to (8);
+            \draw[Arrow] (1) to (8);
             \draw[Arrow] (1) to (4);
         \end{tikzpicture}
 
         %Figure 4b
         \subsection{Figure 4b}
         \begin{tikzpicture}
-            \node (1) {Attractiveness};
+            \node [text width =3.5cm] (1) {\textbf{Unmeasured/Unknown Risk Factors}};
             \node  [right =of 1] (2) {};
             \node [right =of 2] (3)  {};
-            \node [rectangle, draw, above =of 2] (4) {Movie Stardom};
+            \node [rectangle, outer sep=2, draw, above =of 2] (4) {\textbf{Heart Failure}};
             \node [above =of 1] (6) {};
-            \node [above =of 6] (7) {Talent};
+            \node [above =of 6] (7) {\textbf{Obesity}};
+            \node [right =of 4] (8) {\textbf{Mortality}};
+            
             \draw[Arrow] (7) to (4);
+            \draw[Arrow] (4) to (8);
+            \draw[Arrow] (1) to (8);
             \draw[Arrow] (1) to (4);
-            \draw [smooth, ultra thick, dashed, red] plot coordinates{(0,2.5)(0.6,1.9)(0.95,1.40)(0.6,0.9)(0,0.2)};
         \end{tikzpicture}
 \end{lstlisting}
 
 
 
 \section*{Daggity Code for Figure 4a and 4b:}
+\subsection*{4a}
 \begin{lstlisting}[frame=single, basicstyle=\ttfamily]
+    dag {
+        "Heart Failure" [exposure,pos="-0.575,0.545"]
+        "Unmeasured/Unknown" [pos="-1.119,1.008"]
+        Mortality [outcome,pos="-0.072,0.545"]
+        Obesity [pos="-1.071,-0.006"]
+        "Heart Failure" -> Mortality
+        "Unmeasured/Unknown" -> "Heart Failure"
+        "Unmeasured/Unknown" -> Mortality
+        Obesity -> "Heart Failure"
+        }
+\end{lstlisting}
 
+
+\subsection*{4b}
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily]
+    dag {
+        "Heart Failure" [adjusted,pos="-0.685,0.529"]
+        "Unmeasured/Unknown" [pos="-1.119,1.008"]
+        Mortality [outcome,pos="-0.072,0.545"]
+        Obesity [pos="-1.071,-0.006"]
+        "Heart Failure" -> Mortality
+        "Unmeasured/Unknown" -> "Heart Failure"
+        "Unmeasured/Unknown" -> Mortality
+        Obesity -> "Heart Failure"
+        }
 \end{lstlisting}
 
 \section*{\LaTeX\hspace*{1mm} Code for Figure 5:}
-\begin{lstlisting}[frame=single, basicstyle=\ttfamily]
+\subsection*{A}
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily, linewidth=22.5cm]
+    
     \begin{tikzpicture}
-        \node [text width=1.5cm](1) {\textbf{Friends alcohol abuse$_{time 0}$}};
-        \node [right =of 1] (2) {\textbf{Alcohol Abuse$_{time 0}$}};
-        \node [right =of 2,text width=1.5cm] (3) {\textbf{Friends alcohol abuse$_{time 1}$}};
-        \node [right =of 3] (4) {\textbf{Alcohol Abuse$_{time 1}$}};
-        \node [right =of 4] (5) {};
-        \node [right =of 5] (8) {\textbf{Death}};
-        \node [below =of 3] (6) {\textbf{Smoking$_{time 1}$}};
-        \node [right =of 6] (9) {};
-        \node [right =of 9] (7) {\textbf{Smoking$_{time 2}$}};
-        \draw[Arrow, thick] (1.east) -- (2.west);
-        \draw[Arrow, thick] (1) to [out=25, in=160] (3);
-        \draw[Arrow, thick] (1) to [out=25, in=160] (4);
-        \draw[Arrow, thick] (1) to [out=25, in=160] (8);
-        \draw[Arrow, thick] (2.east) -- (3.west);
-        \draw[Arrow, thick] (2) to [out=25, in=160] (4);
-        \draw[Arrow, thick] (3.east) -- (4.west);
-        \draw[Arrow, thick] (3) to [out=25, in=160] (8);
-        \draw[Arrow, thick] (2) to (6);
-        \draw[Arrow, thick] (6.east) -- (4.south);
-        \draw[Arrow, thick] (6.east) -- (7);
-        \draw[Arrow, thick] (4) to (7);
-        \draw[Arrow, thick] (7) to (8);
+        \node  [text width=2.5cm, align=center] (4) at (10,7)  {\textbf{Death before Age 4 Years}};
+        \node (2) at (6,7) {\textbf{SEP at Birth}};
+        \node [text width=3cm] (6) at (14,7) {\textbf{Infections from Birth to Age 4 Years}};
+        \node (1) at (6,5) {\textbf{Birthweight}};
+        \node [text width=3cm](5) at (14,5) {\textbf{Lung Function at Age 4 Years}};
+        \node [rectangle, draw, outer sep=0.1cm] (7) at (10,9) {\textbf{S}};
+    
+        \draw[Arrow] (1.east) to (4.south);
+        \draw[Arrow] (2.south) to (1.north);
+        \draw[Arrow] (2.south) to (5.north west);
+        \draw[Arrow] (6.west) to (4.east);
+        \draw[Arrow] (6.south) to (5.north);
+        \draw[Arrow] (1.east) to (5.west);
+        \draw[Arrow] (2.east) to (4.west);
+        \draw[Arrow] (4.north) to (7.south);
+        
     \end{tikzpicture}
+\end{lstlisting}
+
+\subsection*{B}
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily, linewidth=22.5cm]
+\begin{tikzpicture}
+    \node [text width=3cm, rectangle, draw, outer sep=0.1cm] (4) at (10,7)
+      {\textbf{Antihypertensive Medication Use}};
+    \node (3) at (10,5) {\textbf{Hypertension}};
+    \node (2) at (6,7) {\textbf{Obesity}};
+    \node (6) at (14,7) {\textbf{Schooling}};
+    \node (1) at (6,5) {\textbf{Physical Activity}};
+    \node (5) at (14,5) {\textbf{Diet}};
+
+    \draw[Arrow] (2.south) to (1.north);
+    \draw[Arrow] (2.east) to (4.west);
+    \draw[Arrow] (1.east) to (3.west);
+    \draw[Arrow] (5.west) to (3.east);
+    \draw[Arrow] (6.south) to (5.north);
+    \draw[Arrow] (6.west) to (4.east);
+    \draw[Arrow] (4.south) to (3.north);
+\end{tikzpicture}
 \end{lstlisting}
 
 
 \section*{Daggity Code for Figure 5:}
+\subsection*{A}
 \begin{lstlisting}[frame=single, basicstyle=\ttfamily]
-
+dag {
+"Death before Age 4" [pos="-0.663,0.344"]
+"Lung Function at Age 4" [pos="-0.061,1.296"]
+"SEP at birth" [pos="-1.203,0.545"]
+"infection from birth to age 4" [outcome,pos="-0.072,0.545"]
+Birthweight [exposure,pos="-1.228,1.286"]
+S [pos="-0.663,-0.341"]
+"Death before Age 4" -> S
+"SEP at birth" -> "Death before Age 4"
+"SEP at birth" -> "Lung Function at Age 4"
+"SEP at birth" -> Birthweight
+"infection from birth to age 4" -> "Death before Age 4"
+"infection from birth to age 4" -> "Lung Function at Age 4"
+Birthweight -> "Death before Age 4"
+Birthweight -> "Lung Function at Age 4"}
+        
+\end{lstlisting}
+\subsection*{B}
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily]
+dag {
+"Physical Activity" [exposure,pos="-1.228,1.286"]
+"antihypertensive medication use" [pos="-0.604,0.200"]
+Obseity [pos="-1.203,0.545"]
+diet [outcome,pos="-0.061,1.296"]
+hypertension [pos="-0.615,1.286"]
+schooling [pos="-0.072,0.545"]
+"Physical Activity" -> hypertension
+"antihypertensive medication use" -> hypertension
+Obseity -> "Physical Activity"
+Obseity -> "antihypertensive medication use"
+diet -> hypertension
+schooling -> "antihypertensive medication use"
+schooling -> diet
+}
 \end{lstlisting}
 
-
 \section*{\LaTeX\hspace*{1mm} Code for Figure 6:}
-\begin{lstlisting}[frame=single, basicstyle=\ttfamily]
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily, linewidth=22.5cm]
     \subsection*{A}
     \begin{tikzpicture}
         \node (1) {};
@@ -233,21 +369,24 @@ shorten >= 3pt, preaction = {decorate}]
         \node [right =of 2] (3) {\textbf{Alcohol Use Disorder(Exposure)}};
         \node [right =of 3] (4) {};
         \node [right =of 4] (5) {\textbf{5-Year Mortality(Outcome)}};
+    
         \draw[Arrow] (3.east)--(5.west);
     \end{tikzpicture}
     
     \subsection*{B}
     \begin{tikzpicture}
-        \node (1) [text width=2cm] {\textbf{Family Hx of Alcohol Abuse}};
-        \node [right =of 1] (2) {};
-        \node [right =of 2] (3) {};
-        \node [right =of 3] (4) {\textbf{Alcohol Use Disorder(Exposure)}};
-        \node [right =of 4] (6) {\textbf{5-Year Mortality (Outcome)}};
-        \node [above =of 1] (13) {};
-        \node [above =of 2] (9) {\textbf{Alcohol Abuse}};
-        \node [above =of 13] (7) {\textbf{SEP}};
-        \node [right =of 7] (8) {\textbf{Care Access}};
-        \draw[Arrow] (4.east)--(6.west);
+        \node (1) [text width=2cm] {\textbf{Family Hx of Alcohol Use}};
+    \node [right =of 1] (2) {};
+    \node [right =of 2] (3) {};
+    \node [right =of 3] (4) {\textbf{Alcohol Use Disorder(Exposure)}};
+    \node [right =of 4] (6) {\textbf{5-Year Mortality (Outcome)}};
+    \node [above =of 1] (13) {};
+    \node [above =of 2] (9) {\textbf{Heavy Alcohol Use}};
+    \node [above =of 13] (7) {\textbf{SEP}};
+    \node [right =of 7] (8) {\textbf{Care Access}};
+    \node [right =of 6, rectangle, draw] (14) {\textbf{S}};
+
+    \draw[Arrow] (4.east)--(6.west);
     \end{tikzpicture}
     \end{figure}
     %need to split these up to smaller figures
@@ -256,43 +395,47 @@ shorten >= 3pt, preaction = {decorate}]
     \begin{figure}[H]
     \subsection*{C}
     \begin{tikzpicture}
-        \node (1) [text width=2cm] {\textbf{Family Hx of Alcohol Abuse}};
-        \node [right =of 1] (2) {};
-        \node [right =of 2] (3) {};
-        \node [right =of 3] (4) {\textbf{Alcohol Use Disorder(Exposure)}};
-        \node [right =of 4] (6) {\textbf{5-Year Mortality (Outcome)}};
-        \node [above =of 1] (13) {};
-        \node [above =of 2] (9) {\textbf{Alcohol Abuse}};
-        \node [above =of 13] (7) {\textbf{SEP}};
-        \node [right =of 7] (8) {\textbf{Care Access}};
-        \draw[Arrow] (4.east)--(6.west);
-        \draw[Arrow] (1.north) to (7.south);
-        \draw[Arrow] (7.east) to (8.west);
-        \draw[Arrow] (7) to  (9);
-        \draw[Arrow] (9) to  (4);
-        \draw[Arrow] (8) to [out=0, in=140] (6);
-        \draw[Arrow] (8.south) to  (4.north);
-        \draw[Arrow] (9) to  (4);
-        \draw[Arrow] (9) to [out=0, in=160]  (6);
-        \draw[Arrow] (1) to (9);
-        
+        \node (1) [text width=2cm] {\textbf{Family Hx of Alcohol Use}};
+    \node [right =of 1] (2) {};
+    \node [right =of 2] (3) {};
+    \node [right =of 3] (4) {\textbf{Alcohol Use Disorder(Exposure)}};
+    \node [right =of 4] (6) {\textbf{5-Year Mortality (Outcome)}};
+    \node [above =of 1] (13) {};
+    \node [above =of 2] (9) {\textbf{Heavy Alcohol Use}};
+    \node [above =of 13] (7) {\textbf{SEP}};
+    \node [right =of 7] (8) {\textbf{Care Access}};
+    \node [right =of 6, rectangle, draw] (14) {\textbf{S}};
+
+    \draw[Arrow] (4.east)--(6.west);
+    \draw[Arrow] (1.north) to (7.south);
+    \draw[Arrow] (7.east) to (8.west);
+    \draw[Arrow] (7) to  (9);
+    \draw[Arrow] (9) to  (4);
+    \draw[Arrow] (8) to [out=0, in=140] (6);
+    \draw[Arrow] (8.south) to  (4.north);
+    \draw[Arrow] (9) to  (4);
+    \draw[Arrow] (9) to [out=0, in=160]  (6);
+    \draw[Arrow] (1) to (9);
+    \draw[Arrow] (8) to [out=0,in=140] (14);
     \end{tikzpicture}
     
     \subsection*{D}
     \begin{tikzpicture}
         \node (1) [text width=3cm] {\textbf{Friends Alcohol Use}};
         \node [right =of 1] (2) {};
-        \node [right =of 2] (3) {};
-        \node [right =of 3] (4) {\textbf{Alcohol Use Disorder(Exposure)}};
+      
+        \node [right =of 2] (4) {\textbf{Alcohol Use Disorder (Exposure)}};
         \node [right =of 4] (6) {\textbf{5-Year Mortality(Outcome)}};
         \node [above =of 1] (13) {};
-        \node [above =of 2] (9) {\textbf{Alcohol Abuse}};
+        \node [above =of 2, text width=1.8cm] (9) {\textbf{Heavy Alcohol Use}};
         \node [above =of 13] (7) {\textbf{SEP}};
         \node [right =of 7] (8) {\textbf{Care Access}};
         \node [above =of 6] (15) {};
         \node [above =of 15] (16) {\textbf{Smoking}};
         \node [below =of 2] (17) {\textbf{U}};
         \node [left =of 1, text width=2.5cm,align=center] (18) {\textbf{Family Hx of Alcohol Abuse}};
+        \node [right =of 6, rectangle, draw] (20) {\textbf{S}};
+    
         \draw[Arrow] (4.east)--(6.west);
         \draw[Arrow] (18.east) to (1.west);
         \draw[Arrow] (7.east) to (8.west);
@@ -303,23 +446,242 @@ shorten >= 3pt, preaction = {decorate}]
         \draw[Arrow] (9) to  (4);
         \draw[Arrow] (9) to [out=0, in=160]  (6);
         \draw[Arrow] (1) to (9);
-        \draw[Arrow] (7) to [out=20, in=180] (16);
+        \draw[Arrow] (7) to [out=-10, in=180] (16);
         \draw[Arrow] (9) to (16);
         \draw[Arrow] (16) to (6);
         \draw[Arrow] (17) to [out=20, in=-140] (4);
         \draw[Arrow] (17) to [out=0, in=-160](6);
-        \draw [Arrow] (7) to [out=-20, in=140] (6);
+        \draw [Arrow] (7) to [out=10, in=120] (6);
         \draw [Arrow] (18) to (7);
         \draw [Arrow] (18) to [out=30, in=180] (9);
         \draw [Arrow] (18) to [out=-30, in=-180] (4);
+        \draw[Arrow] (8) to [out=0,in=90] (20);
+        \draw[Arrow] (17) to [out=0,in=-160] (20);
     \end{tikzpicture}
 \end{lstlisting}
 
 \section*{Daggity Code for Figure 6:}
-\begin{lstlisting}[frame=single, basicstyle=\ttfamily]
-
+\subsection*{6a}
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily, linewidth=20.5cm]
+    dag {
+        "5-year mortality" [outcome,pos="0.133,0.056"]
+        "Alcohol use disorder" [exposure,pos="-0.860,0.066"]
+        "Alcohol use disorder" -> "5-year mortality"
+        }        
 \end{lstlisting}
 
+\subsection*{6b}
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily, linewidth=20.5cm]
+    dag {
+"5-year mortality" [outcome,pos="0.133,0.056"]
+"Alcohol use disorder" [exposure,pos="-0.860,0.066"]
+"Care access" [pos="-0.973,-1.004"]
+"Family history of alcohol use" [pos="-1.743,0.179"]
+"Heavy Alcohol Use" [pos="-1.188,-0.397"]
+S [adjusted,pos="0.713,0.097"]
+SEP [pos="-1.502,-0.958"]
+"Alcohol use disorder" -> "5-year mortality"
+}
 
+        
+\end{lstlisting}
 
-    \end{document}
+\subsection*{6c}
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily, linewidth=20.5cm]
+    dag {
+        "5-year mortality" [outcome,pos="0.133,0.056"]
+        "Alcohol use disorder" [exposure,pos="-0.860,0.066"]
+        "Care access" [pos="-0.973,-1.004"]
+        "Family history of alcohol use" [pos="-1.743,0.179"]
+        "Heavy Alcohol Use" [pos="-1.188,-0.397"]
+        S [adjusted,pos="0.713,0.097"]
+        SEP [pos="-1.502,-0.958"]
+        "Alcohol use disorder" -> "5-year mortality"
+        "Care access" -> "5-year mortality"
+        "Care access" -> S
+        "Family history of alcohol use" -> "Heavy Alcohol Use"
+        "Family history of alcohol use" -> SEP
+        "Heavy Alcohol Use" -> "5-year mortality"
+        "Heavy Alcohol Use" -> "Alcohol use disorder"
+        SEP -> "Care access"
+        SEP -> "Heavy Alcohol Use"
+        }
+        
+\end{lstlisting}
+
+\subsection*{6d}
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily, linewidth=20.5cm]
+    dag {
+        "5-year mortality" [outcome,pos="0.133,0.056"]
+        "Alcohol use disorder" [exposure,pos="-0.860,0.066"]
+        "Care access" [pos="-0.973,-1.004"]
+        "Family history of alcohol use" [pos="-2.075,0.349"]
+        "Friends alcohol use" [pos="-1.425,0.081"]
+        "Heavy Alcohol Use" [pos="-1.188,-0.397"]
+        S [adjusted,pos="0.713,0.097"]
+        SEP [pos="-1.502,-0.958"]
+        U [pos="-0.794,0.843"]
+        smoking [pos="0.020,-0.943"]
+        "Alcohol use disorder" -> "5-year mortality"
+        "Care access" -> "5-year mortality"
+        "Care access" -> S
+        "Family history of alcohol use" -> "Friends alcohol use"
+        "Family history of alcohol use" -> "Heavy Alcohol Use"
+        "Family history of alcohol use" -> SEP
+        "Friends alcohol use" -> "Heavy Alcohol Use"
+        "Heavy Alcohol Use" -> "5-year mortality"
+        "Heavy Alcohol Use" -> "Alcohol use disorder"
+        "Heavy Alcohol Use" -> smoking
+        SEP -> "Care access"
+        SEP -> "Heavy Alcohol Use"
+        SEP -> smoking [pos="-0.688,-1.437"]
+        U -> "5-year mortality"
+        U -> "Alcohol use disorder"
+        U -> S
+        smoking -> "5-year mortality"
+        }
+        
+\end{lstlisting}
+
+\section*{\LaTeX\hspace*{1mm} Code for Figure 7:}
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily, linewidth=20.5cm]
+        \subsection*{A}
+        \begin{tikzpicture}
+            \node [rectangle, draw](1) {\textbf{Alcohol Use Disorder (Exposure)}};
+            \node [right =of 1] (2) {};
+            \node [right =of 2] (3) {};
+            \node [right =of 3] (4) {};
+            \node [right =of 4, rectangle, draw] (5) {\textbf{5-Year Mortality (Outcome)}};
+            \node [above =of 1, rectangle, draw] (6) {\textbf{SEP}};
+            \node [right =of 6, rectangle, draw] (7) {\textbf{Care Access}};
+            \node [right =of 7, rectangle, draw] (8) {\textbf{Heavy alcohol use}};
+            \node [right =of 8, rectangle, draw] (9) {\textbf{Smoking}};
+            \draw [Arrow] (6) to (1); \draw [Arrow] (6) to (5);
+            \draw [Arrow] (7) to (1); \draw [Arrow] (7) to (5);
+            \draw [Arrow] (8) to (1); \draw [Arrow] (8) to (5);
+            \draw [Arrow] (9) to (1); \draw [Arrow] (9) to (5);
+        \end{tikzpicture}
+    \subsection*{B}
+    \begin{tikzpicture}
+        \node (1) {};
+        \node [right =of 1] (2)  {\textbf{Alcohol use disorder (Exposure)}};
+        \node [right =of 2] (3) {};
+        \node [right =of 3] (4) {\textbf{Death (Outcome)}};
+        \node [left =of 1] (5) {\textbf{SEP}};
+        \node [above =of 3] (6) {\textbf{Smoking}};
+        \draw[Arrow] (2.east)--(4.west);
+        \draw[>=latex, thick, <->] (2)--(6);
+        \draw[Arrow] (6) to (3);
+        \draw[Arrow] (5) to [out=-25, in=-160] (4);
+        \draw[Arrow] (5) to [out=30, in=180] (6);
+        \draw[>=latex, thick, <->] (5.east)--(2.west);
+    \end{tikzpicture}
+    \end{lstlisting}
+
+\section*{Daggity Code for Figure 7:}
+\subsection*{A}
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily, linewidth=20.5cm]dag {
+        "5-year mortality" [outcome,pos="0.133,0.056"]
+        "Alcohol use disorder" [exposure,pos="-0.860,0.066"]
+        "Care access" [pos="-0.973,-1.004"]
+        "Family history of alcohol use" [pos="-2.075,0.349"]
+        "Friends alcohol use" [pos="-1.425,0.081"]
+        "Heavy Alcohol Use" [pos="-1.188,-0.397"]
+        S [adjusted,pos="0.713,0.097"]
+        SEP [pos="-1.502,-0.958"]
+        U [pos="-0.794,0.843"]
+        smoking [pos="0.020,-0.943"]
+        "Alcohol use disorder" -> "5-year mortality"
+        "Care access" -> "5-year mortality"
+        "Care access" -> S
+        "Family history of alcohol use" -> "Friends alcohol use"
+        "Family history of alcohol use" -> "Heavy Alcohol Use"
+        "Family history of alcohol use" -> SEP
+        "Friends alcohol use" -> "Heavy Alcohol Use"
+        "Heavy Alcohol Use" -> "5-year mortality"
+        "Heavy Alcohol Use" -> "Alcohol use disorder"
+        "Heavy Alcohol Use" -> smoking
+        SEP -> "Care access"
+        SEP -> "Heavy Alcohol Use"
+        SEP -> smoking [pos="-0.688,-1.437"]
+        U -> "5-year mortality"
+        U -> "Alcohol use disorder"
+        U -> S
+        smoking -> "5-year mortality"
+        }
+\end{lstlisting}
+
+\subsection*{B}
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily, linewidth=20.5cm]dag {
+    dag {
+        "5-year mortality" [outcome,pos="0.133,0.056"]
+        "Alcohol use disorder" [exposure,pos="-1.020,0.040"]
+        SEP [adjusted,pos="-1.623,1.121"]
+        smoking [adjusted,pos="-0.042,-0.881"]
+        "Alcohol use disorder" -> "5-year mortality"
+        "Alcohol use disorder" <-> SEP
+        "Alcohol use disorder" <-> smoking
+        SEP -> "5-year mortality"
+        SEP -> smoking [pos="-1.261,-0.757"]
+        smoking -> "5-year mortality"
+        }
+*Note that node with edge ending on an edge cannot be made in daggity        
+\end{lstlisting}
+        
+
+\section*{\LaTeX\hspace*{1mm} Code for Supplemental Figure 1}
+    \begin{lstlisting}[frame=single, basicstyle=\ttfamily, linewidth=22.5cm]
+        \begin{tikzpicture}
+            \node [text width=2.8cm](1) {\textbf{Friend's heavy alcohol use$_{time 0}$}};
+            \node [right =of 1] (2) {\textbf{Heavy Alcohol Use$_{time 0}$}};
+            \node [right =of 2,text width=2.8cm] (3) {\textbf{Friend's heavy alcohol use$_{time 1}$}};
+            \node [right =of 3] (4) {\textbf{Heavy Alcohol Use$_{time 1}$}};
+            \node [right =of 4] (5) {};
+            \node [right =of 5] (8) {\textbf{Death}};
+            \node [below =of 3] (6) {\textbf{Smoking$_{time 1}$}};
+            \node [right =of 6] (9) {};
+            \node [right =of 9] (7) {\textbf{Smoking$_{time 2}$}};
+            \draw[Arrow, thick] (1.east) -- (2.west);
+            \draw[Arrow, thick] (1) to [out=25, in=160] (3);
+            \draw[Arrow, thick] (1) to [out=25, in=160] (4);
+            \draw[Arrow, thick] (1) to [out=25, in=160] (8);
+            \draw[Arrow, thick] (2.east) -- (3.west);
+            \draw[Arrow, thick] (2) to [out=25, in=160] (4);
+            \draw[Arrow, thick] (3.east) -- (4.west);
+            \draw[Arrow, thick] (3) to [out=25, in=160] (8);
+            \draw[Arrow, thick] (2) to (6);
+            \draw[Arrow, thick] (6.east) -- (4.south);
+            \draw[Arrow, thick] (6.east) -- (7);
+            \draw[Arrow, thick] (4) to (7);
+            \draw[Arrow, thick] (7) to (8);
+        \end{tikzpicture}
+        \end{lstlisting}
+
+\section*{Daggity Code for Supplemental Figure 1}
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily, linewidth=23.5cm]
+        dag {
+            "5-year mortality" [outcome,pos="1.246,0.112"]
+            "Friends heavy alcohol use_time 0" [adjusted,pos="-1.783,0.184"]
+            "Friends heavy alcohol use_time 1" [pos="-0.316,0.107"]
+            "Heavy alcohol use_time 0" [pos="-0.878,-0.109"]
+            "heavy alcohol use_time 1" [exposure,pos="0.334,-0.186"]
+            smoking_time1 [adjusted,pos="-0.250,0.925"]
+            smoking_time2 [pos="0.709,0.920"]
+            "Friends heavy alcohol use_time 0" -> "5-year mortality" [pos="-0.466,-1.529"]
+            "Friends heavy alcohol use_time 0" -> "Friends heavy alcohol use_time 1" [pos="-0.685,-0.618"]
+            "Friends heavy alcohol use_time 0" -> "Heavy alcohol use_time 0"
+            "Friends heavy alcohol use_time 0" -> "heavy alcohol use_time 1" [pos="-0.663,-0.927"]
+            "Friends heavy alcohol use_time 1" -> "heavy alcohol use_time 1"
+            "Heavy alcohol use_time 0" -> "Friends heavy alcohol use_time 1"
+            "Heavy alcohol use_time 0" -> smoking_time1
+            "heavy alcohol use_time 1" -> "5-year mortality"
+            "heavy alcohol use_time 1" -> smoking_time2
+            smoking_time1 -> "heavy alcohol use_time 1"
+            smoking_time1 -> smoking_time2
+            smoking_time2 -> "5-year mortality"
+            }
+\end{lstlisting}
+    
+
+    
+    \end{document} 
